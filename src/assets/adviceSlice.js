@@ -6,6 +6,7 @@ const allAdvRoute = "http://localhost:3001/allAdvices"
 const suggestAdvRoute = "http://localhost:3001/suggestAdvice"
 const addAdvRoute = "http://localhost:3001/addAdvice"
 const removeAdvRoute = "http://localhost:3001/removeAdvice"
+
 export const getAdv = createAsyncThunk("getAdvices", async () => {
     try {
         const res = await axios.get(advRoute)
@@ -47,14 +48,23 @@ export const removeadvice = createAsyncThunk("removeAdvice",async () =>{
 const slice = createSlice({
     name: "advices",
     initialState: {
-        advices: []
+        advices: [],
+        isAdm:false
     },
-    reducers: {},
+    reducers:{
+        admOn : (state, action) => {
+            state.isAdm = true 
+        },
+        admOff : (state, action) => {
+            state.isAdm = false 
+        }
+    },
     extraReducers: (build) => {
         build.addCase(getAdv.fulfilled, (state, action) => {
-            return { ...state.advices, advices: action.payload }
+            return { ...state, advices: action.payload }
         })
     }
 })
 
+export const {admOn, admOff} = slice.actions
 export default slice.reducer

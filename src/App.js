@@ -1,14 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux/es/exports";
-
+import { Routes, Route } from "react-router-dom"
+import SearchBar from "./components/SearchBar";
+import AdvicesContainer from "./components/AdvicesContainer";
+import AdviceForm from "./components/AdviceForm"
+import Admin from "./components/Admin";
 export default function App() {
-  const advices = useSelector(data => data)
-  console.log(advices)
   return (
     <div className="App">
-      <h1 className="primary">teste</h1>
+      <SearchBar />
+      <Routes>
+        <Route path="/" element={<AdvicesContainer/>}/>
+        <Route path="/suggestAdvice" element={<AdviceForm />}/>
+        <Route path="/admin" element={<Admin/>}/>
+      </Routes>
     </div>
   );
 }
 
-  
