@@ -16,6 +16,8 @@ export default function Admin() {
     function handleLogin() {
         if (name === "user" && pass === "12345") {
             dispatch(admOn())
+            setName("")
+            setPass("")
         }
     }
     return (

@@ -20,7 +20,7 @@ export default function SearchBar() {
                     <Link to="/" className="text-light text-decoration-none">Inicio</Link>
                 </li>
                 {isAdm === true && <li className="d-flex">
-                    <Link to="/suggestAdvice" className="text-light text-decoration-none mx-2">postar</Link>
+                    <Link to="/postAdvice" className="text-light text-decoration-none mx-2">postar</Link>
                 </li>}
                 {isAdm === false &&
                     <>

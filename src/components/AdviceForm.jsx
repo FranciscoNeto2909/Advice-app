@@ -25,14 +25,14 @@ export default function AdviceForm() {
         }
     }
     return (
-        <form className="row g-3">
-            <label htmlFor="title">Title</label>
+        <form className="col-8 mx-auto p-2">
+            <label htmlFor="title" className="form-label">Title</label>
             <input id="title" type="text" maxLength="20" minLength="5"
-                value={title} onChange={handleChangeTitle} />
-            <label htmlFor="advice">Advice</label>
-            <input id="advice" type="text" minLength="8" maxLength="30"
-                value={advice} onChange={handleChangeAdvice} />
-            <button onClick={handleSendAdvice}>Enviar</button>
+                className="form-control" value={title} onChange={handleChangeTitle} />
+            <label htmlFor="advice" className="form-label">Advice</label>
+            <input id="advice" type="text" minLength="8" maxLength="55"
+                className="form-control" value={advice} onChange={handleChangeAdvice} />
+            <button onClick={handleSendAdvice} className="btn btn-primary mt-2" >Enviar</button>
         </form>
     )
 }
