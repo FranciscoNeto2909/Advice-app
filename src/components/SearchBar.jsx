@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { admOff } from "../assets/adviceSlice"
 
 export default function SearchBar() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const isAdm = useSelector(data => data.advices.isAdm)
+
     function handleLogin() {
         dispatch(admOff())
+        navigate("/")
     }
 
     return (
@@ -22,11 +25,12 @@ export default function SearchBar() {
                 {isAdm === true && <li className="d-flex">
                     <Link to="/postAdvice" className="text-light text-decoration-none mx-2">postar</Link>
                 </li>}
+
+                <li>
+                    <Link to="/suggestAdvice" className="text-light text-decoration-none mx-4">{isAdm ? "Criar" : "Sugerir"}</Link>
+                </li>
                 {isAdm === false &&
                     <>
-                        <li>
-                            <Link to="/suggestAdvice" className="text-light text-decoration-none mx-4">Sugerir</Link>
-                        </li>
                         <li>
                             <Link to="/admin" className="text-light text-decoration-none">Adm</Link>
                         </li>

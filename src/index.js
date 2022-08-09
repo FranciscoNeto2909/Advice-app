@@ -6,8 +6,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App';
-import { getAdv } from './assets/adviceSlice';
+import { getAdv, getSuggestedAdvice } from './assets/adviceSlice';
 store.dispatch(getAdv())
+store.dispatch(getSuggestedAdvice())
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

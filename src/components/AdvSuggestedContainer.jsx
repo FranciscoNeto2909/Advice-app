@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux"
+import SuggestedAdvCard from "../components/SuggestedAdvCard"
 export default function AdvSuggestedContainer() {
+    const advices = useSelector(data => data.advices.suggestedAdvices)
     return(
-        <div>
-            <p>Aqui ficarão os conselhos sugeridos pelos usuarios...</p>
+        <div className="container container-sm">
+            {advices.map((adv, i) => <SuggestedAdvCard adv={adv} key={i}/>)}
         </div>
     )
 }

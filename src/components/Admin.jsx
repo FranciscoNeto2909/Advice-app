@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux/es/exports"
-import { admOn } from "../assets/adviceSlice"
-
+import { admOn, getAdv } from "../assets/adviceSlice"
+import {useNavigate} from "react-router-dom"
 export default function Admin() {
     const [name, setName] = useState("")
     const [pass, setPass] = useState("")
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     function handleChangeName(e) {
         setName(e.target.value)
@@ -16,8 +17,10 @@ export default function Admin() {
     function handleLogin() {
         if (name === "user" && pass === "12345") {
             dispatch(admOn())
+            dispatch(getAdv())
             setName("")
             setPass("")
+            navigate("/")
         }
     }
     return (
