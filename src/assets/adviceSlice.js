@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
 const advRoute = "http://localhost:3001"
 const suggestedAdvRoute = "http://localhost:3001/suggestedAdvice"
 const suggestAdvRoute = "http://localhost:3001/suggestAdvice"
@@ -63,7 +62,9 @@ const slice = createSlice({
     initialState: {
         advices: [],
         suggestedAdvice: [],
-        isAdm: false
+        isAdm: false,
+        hasMsg:false,
+        msg:""
     },
     reducers: {
         admOn: (state, action) => {
@@ -71,6 +72,15 @@ const slice = createSlice({
         },
         admOff: (state, action) => {
             state.isAdm = false
+        },
+        showMsg: (state, action) => {
+            state.hasMsg = true
+        },
+        hideMsg: (state, action) => {
+            state.hasMsg = false
+        },
+        setMsg: (state, action) =>{
+            state.msg = action.payload
         }
     },
     extraReducers: (build) => {
