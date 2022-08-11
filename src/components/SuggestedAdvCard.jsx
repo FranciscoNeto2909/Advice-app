@@ -16,7 +16,6 @@ export default function SuggestedAdvCard({adv}) {
     function handleRemoveAdv() {
         dispatch(removeSugestedAdv(adv.id))
         dispatch(getSuggestedAdvice())
-        dispatch(getAdv())
     }
     return(
         <div className="card">

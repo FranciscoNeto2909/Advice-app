@@ -94,5 +94,5 @@ const slice = createSlice({
 
     },
 })
-export const { admOn, admOff } = slice.actions
+export const { admOn, admOff, showMsg, hideMsg, setMsg } = slice.actions
 export default slice.reducer

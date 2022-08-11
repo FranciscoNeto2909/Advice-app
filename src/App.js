@@ -1,28 +1,24 @@
 import React from "react";
-import { Routes, Route, useNavigate } from "react-router-dom"
+import { Routes, Route} from "react-router-dom"
 import SearchBar from "./components/SearchBar";
-import AdvicesContainer from "./components/AdvicesContainer";
-import AdviceForm from "./components/AdviceForm"
-import Admin from "./components/Admin";
-import AdvSuggestedContainer from "./components/AdvSuggestedContainer";
-import { useEffect } from "react";
-
+import AdvicesContainer from "./pages/AdvicesContainer";
+import PostAdvice from "./pages/PostAdvice"
+import SuggestAdvice from "./pages/SuggestAdvice"
+import Admin from "./pages/Admin";
+import SuggestedAdvice from "./pages/SuggestedAdvices";
+import Alert from "./components/Alert"
 export default function App() {
-  const navigate = useNavigate()
-  useEffect(()=>{
-    navigate("/")
-  },[])
-
   return (
     <div className="App">
       <SearchBar />
+      <Alert/>
       <Routes>
         <Route path="/" element={<AdvicesContainer/>}/>
-        <Route path="/suggestAdvice" element={<AdviceForm />}/>
-        <Route path="/postAdvice" element={<AdvSuggestedContainer/>}/>
+        <Route path="/suggestAdvice" element={<SuggestAdvice/>}/>
+        <Route path="/createAdvice" element={<PostAdvice />}/>
+        <Route path="/postAdvice" element={<SuggestedAdvice/>}/>
         <Route path="/admin" element={<Admin/>}/>
       </Routes>
     </div>
-  );
+  )
 }
-

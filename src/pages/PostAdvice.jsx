@@ -1,16 +1,14 @@
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { setAdvice,getAdv, setSuggestedAdvice } from "../assets/adviceSlice"
-import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { setAdvice, getAdv, showMsg, setMsg, hideMsg } from "../assets/adviceSlice"
 import { v4 } from "uuid"
-export default function AdviceForm() {
+
+export default function PostAdvice() {
 
     const [title, setTitle] = useState("")
     const [advice, setAdv] = useState("")
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const id = v4()
-    const isAdm = useSelector(data => data.advices.isAdm)
 
     function handleChangeTitle(e) {
         setTitle(e.target.value)
@@ -18,18 +16,15 @@ export default function AdviceForm() {
     function handleChangeAdvice(e) {
         setAdv(e.target.value)
     }
-    async function handleSendAdvice() {
-        if (title.length < 5) {
-            alert("o titulo deve ter mais de 5 caracteres")
-        } else if (advice.length < 5) {
-            alert("o conselho deve ter mais de 5 caracteres")
-        }
-        else {
-            dispatch(setSuggestedAdvice({ title: title, advice: advice }))
-            window.location.reload()
-            navigate("/")
-        }
+    function handleShowMsg() {
+        dispatch(showMsg())
+        dispatch(setMsg("Advice added"))
+        setTimeout(() => {
+            dispatch(hideMsg())
+            dispatch(setMsg(""))
+        }, 2500);
     }
+
     function handleAddAdv() {
         if (title.length < 5) {
             alert("o titulo deve ter mais de 5 caracteres")
@@ -37,10 +32,9 @@ export default function AdviceForm() {
             alert("o conselho deve ter mais de 5 caracteres")
         }
         else {
-            dispatch(setAdvice({id:id, title: title, advice: advice }))
+            dispatch(setAdvice({ id: id, title: title, advice: advice }))
             dispatch(getAdv())
-            navigate("/")
-
+            handleShowMsg()
         }
     }
     return (
@@ -53,7 +47,7 @@ export default function AdviceForm() {
             <input id="advice" type="text" minLength="8"
                 maxLength="55" autoComplete="off"
                 className="form-control" value={advice} onChange={handleChangeAdvice} />
-            <button onClick={isAdm === true ? handleAddAdv : handleSendAdvice} className="btn btn-primary mt-2" >Enviar</button>
+            <button onClick={handleAddAdv} className="btn btn-primary mt-2" >Enviar</button>
         </div>
     )
 }

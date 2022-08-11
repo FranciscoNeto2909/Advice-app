@@ -16,9 +16,14 @@ body {
   height: 100vh;
   margin: 0 auto;
   text-align: center;
+  position: relative;
 }
 .items-list{
   width: 150px;
+}
+.alert{
+  z-index: 1;
+  background: linear-gradient(to left,#008080ef, #00c0c0ef);
 }
 @media (max-width: 600px) {
   .App{
