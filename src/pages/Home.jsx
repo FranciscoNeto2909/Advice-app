@@ -10,7 +10,7 @@ export default function Home({filteredAdvices}) {
 
     useEffect(() => {
         dispatch(getAdv())
-    }, [dispatch])
+    }, [dispatch, advices])
     return (
         <div className="container container-sm mt-4">
             {filteredAdvices ?
