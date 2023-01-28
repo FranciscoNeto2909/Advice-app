@@ -2,12 +2,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { admOff } from "../assets/adviceSlice"
 
-export default function SearchBar({setFilteredAdvices}) {
+export default function SearchBar({ setFilteredAdvices }) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isAdm = useSelector(data => data.advices.isAdm)
     const advices = useSelector(data => data.advices.advices)
-    
+
     function handleLogin() {
         dispatch(admOff())
         navigate("/")
@@ -47,13 +47,15 @@ export default function SearchBar({setFilteredAdvices}) {
                         <li>
                             <Link to="/suggestAdvice" className="text-light text-decoration-none mx-2">Sugerir</Link>
                         </li>
-                        <li>
-                            <Link to="/admin" className="text-light text-decoration-none">Adm</Link>
-                        </li>
                     </>
                 }
             </ul>
-            {isAdm && <button className="btn text-light m-0 py-0 px-1" onClick={handleLogin}>Sair</button>}
-        </nav>
+            {isAdm ? <button className="btn text-light m-0 py-0 px-1" onClick={handleLogin}>Sair</button> :
+                <ul className="d-flex justify-content-between gap-2 py-1 px-0 m-0">
+                    <li className="">
+                        <Link to="/admin" className="text-light text-decoration-none">Adm</Link>
+                    </li>
+                </ul>}
+        </nav>  
     )
 }

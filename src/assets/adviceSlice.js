@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-const advRoute = "http://localhost:3001"
-const suggestedAdvRoute = "http://localhost:3001/suggestedAdvice"
-const suggestAdvRoute = "http://localhost:3001/suggestAdvice"
-const addAdvRoute = "http://localhost:3001/addAdvice"
+const advRoute = "https://advice-app.onrender.com"
+const suggestedAdvRoute = "https://advice-app.onrender.com/suggestedAdvice"
+const suggestAdvRoute = "https://advice-app.onrender.com/suggestAdvice"
+const addAdvRoute = "https://advice-app.onrender.com/addAdvice"
 
 export const getAdv = createAsyncThunk("getAdvices", async () => {
     try {
@@ -41,7 +41,7 @@ export const setAdvice = createAsyncThunk("postAdv", async (adv) => {
 })
 export const removeAdvice = createAsyncThunk("removeAdvice", async (id) => {
     try {
-        const res = await axios.delete(`http://localhost:3001/removeAdvice/${id}`)
+        const res = await axios.delete(`https://advice-app.onrender.com/removeAdvice/${id}`)
         return console.log(res)
     } catch (error) {
         console.log(error.message)
