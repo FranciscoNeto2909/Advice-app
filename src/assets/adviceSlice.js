@@ -50,7 +50,7 @@ export const removeAdvice = createAsyncThunk("removeAdvice", async (id) => {
 
 export const removeSugestedAdv = createAsyncThunk("removeSugestedAdv", async (id) => {
     try {
-        const res = await axios.delete(`http://localhost:3001/removeSuggestedAdvice/${id}`)
+        const res = await axios.delete(`https://advice-app.onrender.com/removeSuggestedAdvice/${id}`)
         console.log(res)
     } catch (error) {
         console.log(error)
