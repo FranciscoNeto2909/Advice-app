@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch} from "react-redux"
-import { setSuggestedAdvice, showMsg, setMsg, hideMsg, getSuggestedAdvice } from "../assets/adviceSlice"
+import { setSuggestedAdvice, showMsg, setMsg, hideMsg, getSuggestedAdvice, getAdv } from "../assets/adviceSlice"
 import { v4 } from "uuid"
 
 export default function SuggestAdvice() {
@@ -18,7 +18,7 @@ export default function SuggestAdvice() {
     }
     function handleShowMsg() {
         dispatch(showMsg())
-        dispatch(setMsg("Sugestão enviada"))
+        dispatch(setMsg("Sugest send"))
         setTimeout(() => {
             dispatch(hideMsg())
             dispatch(setMsg(""))
@@ -33,21 +33,22 @@ export default function SuggestAdvice() {
         else {
             dispatch(setSuggestedAdvice({id:id, title: title, advice: advice }))
             dispatch(getSuggestedAdvice())
+            dispatch(getAdv())
             handleShowMsg()
 
         }
     }
     return (
-        <div className="col-8 mx-auto p-2">
+        <form className="container mx-auto p-3 mt-5">
         <label htmlFor="title" className="form-label">Title</label>
         <input id="title" type="text" maxLength="20"
             minLength="5" autoComplete="off"
-            className="form-control" value={title} onChange={handleChangeTitle} />
+            className="form-control mb-3" value={title} onChange={handleChangeTitle} />
         <label htmlFor="advice" className="form-label">Advice</label>
         <input id="advice" type="text" minLength="8"
             maxLength="55" autoComplete="off"
             className="form-control" value={advice} onChange={handleChangeAdvice} />
-        <button onClick={handleSuggestAdvice} className="btn btn-primary mt-2" >Enviar</button>
-    </div>
+        <button type="button" onClick={handleSuggestAdvice} className="btn btn-primary mt-2 px-4" >Enviar</button>
+    </form>
     )
 }

@@ -2,9 +2,10 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { setAdvice, getAdv, showMsg, setMsg, hideMsg } from "../assets/adviceSlice"
 import { v4 } from "uuid"
+import { useNavigate } from "react-router-dom"
 
 export default function PostAdvice() {
-
+    const navigate = useNavigate()
     const [title, setTitle] = useState("")
     const [advice, setAdv] = useState("")
     const dispatch = useDispatch()
@@ -35,10 +36,11 @@ export default function PostAdvice() {
             dispatch(setAdvice({ id: id, title: title, advice: advice }))
             dispatch(getAdv())
             handleShowMsg()
+            navigate("/")
         }
     }
     return (
-        <div className="col-8 mx-auto p-2">
+        <div className="col-8 mx-auto p-2 mt-5">
             <label htmlFor="title" className="form-label">Title</label>
             <input id="title" type="text" maxLength="20"
                 minLength="5" autoComplete="off"

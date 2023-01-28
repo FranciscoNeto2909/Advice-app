@@ -1,15 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
 import { getAdv, removeAdvice } from "../assets/adviceSlice"
 
-export default function AdviceCard({adv}) {
+export default function Card({adv}) {
     const adm = useSelector(data => data.advices.isAdm)
     const dispatch = useDispatch()
-
     function handleRemoveAdv() {
         dispatch(removeAdvice(adv.id))
         dispatch(getAdv())
     }
-    
     return(
         <div className="card my-2">
             <div className="card-body position-relative">

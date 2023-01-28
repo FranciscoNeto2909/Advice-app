@@ -24,19 +24,19 @@ export default function Admin() {
         }
     }
     return (
-        <div>
-            <div className="col-8 mx-auto p-2">
+        <div className="justify-content-center align-items-center mt-5">
+            <form className="col-10 mx-auto p-2">
                 <div className="row">
                     <input type="text" className="form-control" placeholder="Name" aria-label="First name"
                         value={name} onChange={handleChangeName} />
                 </div>
                 <div className="row my-2">
-                    <input type="password" className="form-control" placeholder="pass" aria-label="Last name"
+                    <input type="password" className="form-control" placeholder="Password" aria-label="Password"
                         value={pass} onChange={handleChangePass} />
                 </div>
                 <button className="btn btn-form btn-primary mx-auto"
-                    onClick={handleLogin}>Login</button>
-            </div>
+                    onClick={handleLogin} type="button">Login</button>
+            </form>
         </div>
     )
 }
