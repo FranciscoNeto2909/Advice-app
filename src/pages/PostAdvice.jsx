@@ -40,16 +40,16 @@ export default function PostAdvice() {
         }
     }
     return (
-        <div className="col-8 mx-auto p-2 mt-5">
-            <label htmlFor="title" className="form-label">Title</label>
+        <div className="container mx-auto p-2 px-4 mt-5">
+            <label htmlFor="title" className="form-label">Author</label>
             <input id="title" type="text" maxLength="20"
                 minLength="5" autoComplete="off"
-                className="form-control" value={title} onChange={handleChangeTitle} />
+                className="form-control mb-2" value={title} onChange={handleChangeTitle} />
             <label htmlFor="advice" className="form-label">Advice</label>
             <input id="advice" type="text" minLength="8"
                 maxLength="55" autoComplete="off"
                 className="form-control" value={advice} onChange={handleChangeAdvice} />
-            <button onClick={handleAddAdv} className="btn btn-primary mt-2" >Enviar</button>
+            <button onClick={handleAddAdv} className="btn btn-primary mt-3 px-5" >Enviar</button>
         </div>
     )
 }

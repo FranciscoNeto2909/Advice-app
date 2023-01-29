@@ -32,23 +32,10 @@ export default function SearchBar({ setFilteredAdvices }) {
                 <li>
                     <Link to="/" className="text-light text-decoration-none">Inicio</Link>
                 </li>
-                {isAdm === true &&
-                    <>
-                        <li className="d-flex">
-                            <Link to="/postAdvice" className="text-light text-decoration-none">Post</Link>
-                        </li>
-                        <li>
-                            <Link to="/createAdvice" className="text-light text-decoration-none">Criar</Link>
-                        </li>
-                    </>
-                }
-                {isAdm === false &&
-                    <>
-                        <li>
-                            <Link to="/suggestAdvice" className="text-light text-decoration-none mx-2">Sugerir</Link>
-                        </li>
-                    </>
-                }
+                <li className="d-flex">
+                    <Link to="/createAdvice" className="text-light text-decoration-none">Create</Link>
+                </li>
+
             </ul>
             {isAdm ? <button className="btn text-light m-0 py-0 px-1" onClick={handleLogin}>Sair</button> :
                 <ul className="d-flex justify-content-between gap-2 py-1 px-0 m-0">
@@ -56,6 +43,6 @@ export default function SearchBar({ setFilteredAdvices }) {
                         <Link to="/admin" className="text-light text-decoration-none">Adm</Link>
                     </li>
                 </ul>}
-        </nav>  
+        </nav>
     )
 }

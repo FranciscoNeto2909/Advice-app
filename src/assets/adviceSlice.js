@@ -1,9 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const advRoute = "https://advice-app.onrender.com"
-const suggestedAdvRoute = "https://advice-app.onrender.com/suggestedAdvice"
-const suggestAdvRoute = "https://advice-app.onrender.com/suggestAdvice"
-const addAdvRoute = "https://advice-app.onrender.com/addAdvice"
 
 export const getAdv = createAsyncThunk("getAdvices", async () => {
     try {
@@ -14,46 +11,22 @@ export const getAdv = createAsyncThunk("getAdvices", async () => {
         console.log(error.message)
     }
 })
-export const getSuggestedAdvice = createAsyncThunk("getSuggestedAdvices", async () => {
-    try {
-        const res = await axios.get(suggestedAdvRoute)
-        return res.data
-    }
-    catch (error) {
-        console.log(error.message)
-    }
-})
-export const setSuggestedAdvice = createAsyncThunk("postSuggestAdv", async (adv) => {
-    try {
-        const res = await axios.post(suggestAdvRoute, adv)
-        return console.log(res)
-    } catch (error) {
-        console.log(error.message)
-    }
-})
+
 export const setAdvice = createAsyncThunk("postAdv", async (adv) => {
     try {
-        const res = await axios.post(addAdvRoute, adv)
-        console.log(res)
-    } catch (error) {
-        console.log(error.message)
-    }
-})
-export const removeAdvice = createAsyncThunk("removeAdvice", async (id) => {
-    try {
-        const res = await axios.delete(`https://advice-app.onrender.com/removeAdvice/${id}`)
-        return console.log(res)
+        const res = await axios.post(`${advRoute}/addAdvice`, adv)
+        console.log(res.status)
     } catch (error) {
         console.log(error.message)
     }
 })
 
-export const removeSugestedAdv = createAsyncThunk("removeSugestedAdv", async (id) => {
+export const removeAdvice = createAsyncThunk("removeAdvice", async (id) => {
     try {
-        const res = await axios.delete(`https://advice-app.onrender.com/removeSuggestedAdvice/${id}`)
-        console.log(res)
+        const res = await axios.delete(`${advRoute}/removeAdvice/${id}`)
+        return console.log(res.status)
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
     }
 })
 
@@ -61,7 +34,6 @@ const slice = createSlice({
     name: "advices",
     initialState: {
         advices: [],
-        suggestedAdvice: [],
         isAdm: false,
         hasMsg:false,
         msg:""
@@ -88,10 +60,6 @@ const slice = createSlice({
             .addCase(getAdv.fulfilled, (state, action) => {
                 return { ...state, advices: action.payload }
             })
-            .addCase(getSuggestedAdvice.fulfilled, (state, action) => {
-                return { ...state, suggestedAdvices: action.payload }
-            })
-
     },
 })
 export const { admOn, admOff, showMsg, hideMsg, setMsg } = slice.actions

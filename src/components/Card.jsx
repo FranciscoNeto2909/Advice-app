@@ -12,8 +12,8 @@ export default function Card({adv}) {
         <div className="card my-2">
             <div className="card-body position-relative">
                 { adm && <button className="btn btn-close position-absolute top-0 end-0 mt-1 me-1" aria-label="Close" onClick={handleRemoveAdv}></button>}
-                <h3 className="card-title">{adv.title}</h3>
-                <p className="card-text">{adv.advice}</p>
+                <h4 className="card-title">{adv.advice}</h4>
+                <p className="card-text font-smaller text-end text-secondary">Author: {adv.author}</p>
             </div>
         </div>
     )

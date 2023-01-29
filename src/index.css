@@ -28,6 +28,9 @@ body {
 .form{
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.651);
 }
+.font-smaller{
+  font-size: .85rem;
+}
 @media (max-width: 600px) {
   .App{
     width: 100vw;
