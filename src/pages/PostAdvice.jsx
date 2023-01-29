@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom"
 
 export default function PostAdvice() {
     const navigate = useNavigate()
-    const [title, setTitle] = useState("")
+    const [author, setAuthor] = useState("")
     const [advice, setAdv] = useState("")
     const dispatch = useDispatch()
     const id = v4()
 
-    function handleChangeTitle(e) {
-        setTitle(e.target.value)
+    function handleChangeAuthorName(e) {
+        setAuthor(e.target.value)
     }
     function handleChangeAdvice(e) {
         setAdv(e.target.value)
@@ -27,13 +27,13 @@ export default function PostAdvice() {
     }
 
     function handleAddAdv() {
-        if (title.length < 5) {
+        if (author.length < 5) {
             alert("o titulo deve ter mais de 5 caracteres")
         } else if (advice.length < 5) {
             alert("o conselho deve ter mais de 5 caracteres")
         }
         else {
-            dispatch(setAdvice({ id: id, title: title, advice: advice }))
+            dispatch(setAdvice({ id: id, author: author, advice: advice }))
             dispatch(getAdv())
             handleShowMsg()
             navigate("/")
@@ -41,10 +41,10 @@ export default function PostAdvice() {
     }
     return (
         <div className="container mx-auto p-2 px-4 mt-5">
-            <label htmlFor="title" className="form-label">Author</label>
-            <input id="title" type="text" maxLength="20"
+            <label htmlFor="author" className="form-label">Author</label>
+            <input id="author" type="text" maxLength="20"
                 minLength="5" autoComplete="off"
-                className="form-control mb-2" value={title} onChange={handleChangeTitle} />
+                className="form-control mb-2" value={author} onChange={handleChangeAuthorName} />
             <label htmlFor="advice" className="form-label">Advice</label>
             <input id="advice" type="text" minLength="8"
                 maxLength="55" autoComplete="off"
