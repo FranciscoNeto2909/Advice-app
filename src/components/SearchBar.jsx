@@ -22,13 +22,13 @@ export default function SearchBar({ setFilteredAdvices }) {
     }
 
     return (
-        <nav className="bg-primary text-start p-2 d-flex align-items-center justify-content-between">
-            <div className="d-flex">
+        <nav className="nav bg-primary text-start p-2 d-flex align-items-center justify-content-between">
+            <div className="search-bar d-flex">
                 <label htmlFor="searc" className="text-white me-1"></label>
                 <button className="btn me-2 p-0 bg-secondary" onClick={handleFilterAdvice}>&#x1F50E;</button>
                 <input type="text" placeholder="Pesquisar" className="form-control py-0 ps-1" style={{ width: 130 }} onChange={e => handleFilterAdvice(e.target.value)} />
             </div>
-            <ul className="d-flex justify-content-between gap-2 py-1 px-0 m-0">
+            <ul className="d-flex justify-content-between gap-3 py-1 px-0 m-0">
                 <li>
                     <Link to="/" className="text-light text-decoration-none">Inicio</Link>
                 </li>

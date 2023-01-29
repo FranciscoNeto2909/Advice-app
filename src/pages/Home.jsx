@@ -12,7 +12,7 @@ export default function Home({filteredAdvices}) {
         dispatch(getAdv())
     }, [dispatch, advices])
     return (
-        <div className="container container-sm mt-4">
+        <div className="home container container-sm">
             {filteredAdvices ?
                 filteredAdvices.map((adv, i) => <Card adv={adv} key={i} />) : advices && advices.map((adv, i) => <Card adv={adv} key={i} />)}
         </div>

@@ -31,8 +31,30 @@ body {
 .font-smaller{
   font-size: .85rem;
 }
+.App{
+  height: 100vh;
+  width: 100vw;
+}
 @media (max-width: 600px) {
-  .App{
+  .nav{
     width: 100vw;
+    position: fixed;
+    bottom: 0;
+  }
+  .home{
+    z-index: -1;
+    margin-top: 60px;
+  }
+  .card{
+    z-index: -1;
+  }
+  .search-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    background-color: #0a58ca;
+    width: 100vw;
+    z-index: 2;
   }
 }
