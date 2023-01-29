@@ -24,7 +24,9 @@ export default function Admin() {
         }
     }
     return (
-        <div className="justify-content-center align-items-center mt-5">
+        <div className="admin">
+            <h4>Área de administradores</h4>
+            <p className="font-smaller">Insira seu nome de administrador e sua senha para ter total acesso a aplicação.</p>
             <form className="col-10 mx-auto p-2">
                 <div className="row">
                     <input type="text" className="form-control" placeholder="Name" aria-label="First name"
@@ -35,7 +37,7 @@ export default function Admin() {
                         value={pass} onChange={handleChangePass} />
                 </div>
                 <button className="btn btn-form btn-primary mx-auto"
-                    onClick={handleLogin} type="button">Login</button>
+                    onClick={handleLogin} type="button">Acessar</button>
             </form>
         </div>
     )

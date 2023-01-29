@@ -40,7 +40,7 @@ export default function PostAdvice() {
         }
     }
     return (
-        <div className="container mx-auto p-2 px-4 mt-5">
+        <div className="post-advice container mx-auto p-2 px-4">
             <label htmlFor="author" className="form-label">Author</label>
             <input id="author" type="text" maxLength="20"
                 minLength="5" autoComplete="off"
