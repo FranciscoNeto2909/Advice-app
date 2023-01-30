@@ -33,7 +33,7 @@ export default function SearchBar({ setFilteredAdvices }) {
                     <Link to="/" className="text-light text-decoration-none">Inicio</Link>
                 </li>
                 <li className="d-flex">
-                    <Link to="/createAdvice" className="text-light text-decoration-none">Create</Link>
+                    <Link to="/createAdvice" className="text-light text-decoration-none">Criar</Link>
                 </li>
 
             </ul>
